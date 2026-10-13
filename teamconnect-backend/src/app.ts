@@ -68,6 +68,18 @@ export function createApp(): express.Application {
     app.use(pinoHttp({ logger }));
   }
 
+  // Root route
+  app.get("/", (_req, res) => {
+    res.json({
+      name: "TeamConnect Backend API",
+      status: "online",
+      version: "1.0.0",
+      health: "/api/v1/health",
+      apiBase: "/api/v1",
+      timestamp: new Date().toISOString(),
+    });
+  });
+
   // API v1 Routes
   app.use("/api/v1/health",        healthRouter);
   app.use("/api/v1/auth",          authRouter);
