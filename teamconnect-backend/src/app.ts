@@ -32,7 +32,7 @@ const ALLOWED_ORIGINS = [
   ...envOrigins,
 ];
 
-export function createApp() {
+export function createApp(): express.Application {
   const app = express();
 
   // Security headers

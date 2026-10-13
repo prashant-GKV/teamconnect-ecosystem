@@ -5,6 +5,8 @@
     "module": "CommonJS",
     "moduleResolution": "Node",
     "outDir": "dist",
+    "declaration": false,
+    "declarationMap": false,
     "exactOptionalPropertyTypes": false,
     "noPropertyAccessFromIndexSignature": false,
     "paths": {
