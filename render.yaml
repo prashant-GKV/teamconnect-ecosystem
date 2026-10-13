@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: teamconnect-backend
+    runtime: node
+    plan: free
+    buildCommand: npm install && npm run build:backend
+    startCommand: npm run start:backend
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: CORS_ORIGIN
+        value: "*"
+      - key: JWT_ACCESS_SECRET
+        value: 603aa97c56d3b9b3025c5778ae979ed8e1f1622cf26e5c5a9b3022038dd6496f
+      - key: JWT_REFRESH_SECRET
+        value: 5d2daecd3cfa83075fa1823d7be54992269d5e741ae2d08ebba818e55c42b824
