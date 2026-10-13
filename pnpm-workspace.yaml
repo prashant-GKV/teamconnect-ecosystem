@@ -4,10 +4,9 @@ packages:
   - "teamconnect-admin"
   - "packages/*"
 
-onlyBuiltDependencies:
-  - argon2
-  - esbuild
-  - msw
-  - msgpackr-extract
-  - unrs-resolver
-  - "@next/swc-win32-x64-msvc"
+allowBuilds:
+  argon2: true
+  esbuild: true
+  msgpackr-extract: true
+  msw: true
+  unrs-resolver: true

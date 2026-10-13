@@ -12,9 +12,9 @@
     "seed": "tsx scripts/seed.ts"
   },
   "dependencies": {
-    "@teamconnect/shared-config": "*",
-    "@teamconnect/shared-types": "*",
-    "@teamconnect/validation": "*",
+    "@teamconnect/shared-config": "workspace:*",
+    "@teamconnect/shared-types": "workspace:*",
+    "@teamconnect/validation": "workspace:*",
     "@types/cron": "^2.0.1",
     "argon2": "^0.40.1",
     "bullmq": "^5.12.0",

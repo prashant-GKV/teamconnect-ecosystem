@@ -3,8 +3,8 @@ services:
     name: teamconnect-backend
     runtime: node
     plan: free
-    buildCommand: npm install && npm run build:backend
-    startCommand: npm run start:backend
+    buildCommand: npm install -g pnpm@latest && pnpm install --frozen-lockfile && pnpm --filter teamconnect-backend build
+    startCommand: node teamconnect-backend/dist/server.js
     envVars:
       - key: NODE_ENV
         value: production
