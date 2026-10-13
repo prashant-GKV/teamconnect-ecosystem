@@ -1,6 +1,18 @@
-﻿# TeamConnect
+# TeamConnect
+
+[![CI/CD Pipeline](https://github.com/prashant-GKV/teamconnect-ecosystem/actions/workflows/ci.yml/badge.svg)](https://github.com/prashant-GKV/teamconnect-ecosystem/actions/workflows/ci.yml)
 
 > Organizational operations platform — monorepo
+
+## 🌐 Live Deployments
+
+| Component | Status | URL | Description |
+|:---|:---:|:---|:---|
+| **Backend REST API** | 🟢 Live | [Render API](https://teamconnect-backend-4q77.onrender.com) | Express REST API & Health checks |
+| **User Frontend** | 🟢 Live | [Vercel App](https://vercel.com) | Employee / Lead / PM workspace |
+| **Admin Portal** | 🟢 Live | [Vercel Admin](https://vercel.com) | Super Admin & Org Admin panel |
+
+---
 
 ## Overview
 
