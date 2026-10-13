@@ -1,0 +1,39 @@
+{
+    "name": "teamconnect",
+    "version": "1.0.0",
+    "private": true,
+    "packageManager": "pnpm@12.11.2",
+    "scripts": {
+        "lint": "pnpm -r lint",
+        "format": "prettier --write \"**/*.{ts,tsx,json,md,yaml}\"",
+        "docker:up": "docker compose -f containers/docker-compose.yml up -d",
+        "docker:down": "docker compose -f containers/docker-compose.yml down",
+        "dev:frontend": "npm run dev --workspace=teamconnect-frontend",
+        "dev:admin": "npm run dev --workspace=teamconnect-admin",
+        "dev:backend": "npm run dev --workspace=teamconnect-backend",
+        "dev": "node scripts/dev.js",
+        "build": "npm run build --workspaces --if-present",
+        "build:backend": "npm run build --workspace=teamconnect-backend",
+        "start:backend": "node teamconnect-backend/dist/server.js",
+        "build:frontend": "npm run build --workspace=teamconnect-frontend",
+        "build:admin": "npm run build --workspace=teamconnect-admin",
+        "test": "npm run test --workspaces --if-present",
+        "typecheck": "npm run typecheck --workspaces --if-present",
+        "msw:init": "node node_modules/msw/cli/init.js teamconnect-frontend/public --save"
+    },
+    "devDependencies": {
+        "concurrently": "^10.0.6",
+        "prettier": "^3.2.5",
+        "typescript": "^5.4.5"
+    },
+    "engines": {
+        "node": ">=20.0.0",
+        "pnpm": ">=9.0.0"
+    },
+    "workspaces": [
+        "teamconnect-backend",
+        "teamconnect-frontend",
+        "teamconnect-admin",
+        "packages/*"
+    ]
+}

@@ -1,0 +1,50 @@
+{
+  "extends": "../tsconfig.base.json",
+  "compilerOptions": {
+    "target": "ES2022",
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "jsx": "preserve",
+    "incremental": true,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+    "paths": {
+      "@/*": [
+        "./src/*"
+      ],
+      "@teamconnect/shared-types": [
+        "../packages/shared-types/src"
+      ],
+      "@teamconnect/api-contracts": [
+        "../packages/api-contracts/src"
+      ],
+      "@teamconnect/validation": [
+        "../packages/validation/src"
+      ],
+      "@teamconnect/shared-config": [
+        "../packages/shared-config/src"
+      ]
+    },
+    "noEmit": true,
+    "isolatedModules": true,
+    "exactOptionalPropertyTypes": false,
+    "noPropertyAccessFromIndexSignature": false
+  },
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}

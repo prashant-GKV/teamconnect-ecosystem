@@ -1,0 +1,13 @@
+packages:
+  - "teamconnect-backend"
+  - "teamconnect-frontend"
+  - "teamconnect-admin"
+  - "packages/*"
+
+onlyBuiltDependencies:
+  - argon2
+  - esbuild
+  - msw
+  - msgpackr-extract
+  - unrs-resolver
+  - "@next/swc-win32-x64-msvc"

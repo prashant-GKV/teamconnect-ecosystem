@@ -1,0 +1,76 @@
+# TeamConnect — Docker Compose (development)
+# Spins up MongoDB, Redis, and MinIO only.
+# Applications run via pnpm dev on the host.
+
+version: "3.9"
+
+services:
+  mongo:
+    image: mongo:7.0
+    container_name: tc-mongo
+    restart: unless-stopped
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+    environment:
+      MONGO_INITDB_DATABASE: teamconnect
+    healthcheck:
+      test: ["CMD", "mongosh", "--eval", "db.adminCommand('ping')"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  redis:
+    image: redis:7.2-alpine
+    container_name: tc-redis
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis-data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  minio:
+    image: minio/minio:latest
+    container_name: tc-minio
+    restart: unless-stopped
+    ports:
+      - "9000:9000"
+      - "9001:9001"   # MinIO console
+    volumes:
+      - minio-data:/data
+    environment:
+      MINIO_ROOT_USER:     minioadmin
+      MINIO_ROOT_PASSWORD: minioadmin
+    command: server /data --console-address ":9001"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9000/minio/health/live"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # MinIO bucket setup (one-shot)
+  minio-setup:
+    image: minio/mc:latest
+    container_name: tc-minio-setup
+    depends_on:
+      minio:
+        condition: service_healthy
+    entrypoint: >
+      /bin/sh -c "
+      mc alias set local http://minio:9000 minioadmin minioadmin;
+      mc mb --ignore-existing local/tc-submissions;
+      mc policy set private local/tc-submissions;
+      echo 'MinIO bucket ready.';
+      "
+    restart: "no"
+
+volumes:
+  mongo-data:
+  redis-data:
+  minio-data:

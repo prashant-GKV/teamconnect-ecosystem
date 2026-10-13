@@ -1,0 +1,42 @@
+# TeamConnect — Docker Compose (production)
+# Full stack including frontend, admin, backend, nginx.
+# Completed in Phase 6.
+
+version: "3.9"
+
+services:
+  # Same infra as dev compose, plus:
+  # backend:   image: teamconnect-backend:latest
+  # frontend:  image: teamconnect-frontend:latest
+  # admin:     image: teamconnect-admin:latest
+  # nginx:     image: nginx:alpine
+  # See Phase 6 for complete production configuration.
+
+  mongo:
+    image: mongo:7.0
+    restart: always
+    volumes:
+      - mongo-data:/data/db
+    environment:
+      MONGO_INITDB_DATABASE: teamconnect
+
+  redis:
+    image: redis:7.2-alpine
+    restart: always
+    volumes:
+      - redis-data:/data
+
+  minio:
+    image: minio/minio:latest
+    restart: always
+    volumes:
+      - minio-data:/data
+    environment:
+      MINIO_ROOT_USER:     "${MINIO_ACCESS_KEY}"
+      MINIO_ROOT_PASSWORD: "${MINIO_SECRET_KEY}"
+    command: server /data --console-address ":9001"
+
+volumes:
+  mongo-data:
+  redis-data:
+  minio-data:

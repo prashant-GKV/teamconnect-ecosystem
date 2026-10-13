@@ -1,0 +1,4 @@
+verifyDepsBeforeRun: false
+forbidBuildsWhereScriptsAreMissing: false
+enableModulesDir: true
+preferSymlinkedExecutables: false
