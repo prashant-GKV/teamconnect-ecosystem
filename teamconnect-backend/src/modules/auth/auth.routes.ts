@@ -1,4 +1,4 @@
-import { Router } from "express";
+import { Router, type Request, type Response, type NextFunction } from "express";
 import jwt from "jsonwebtoken";
 import { dbStore, getDefaultUser } from "../../shared/data-store";
 import { env } from "../../config/env";
@@ -50,7 +50,7 @@ authRouter.post("/login", (req, res, next) => {
   }
 });
 
-const handleSignUp = (req: any, res: any, next: any) => {
+const handleSignUp = (req: Request, res: Response, next: NextFunction) => {
   try {
     const { name, username, email, password, role } = req.body;
 
@@ -160,7 +160,7 @@ authRouter.get("/me", (req, res, next) => {
   const authHeader = req.headers["authorization"];
   if (authHeader?.startsWith("Bearer ")) {
     try {
-      const decoded = jwt.verify(authHeader.slice(7), env.JWT_ACCESS_SECRET) as any;
+      const decoded = jwt.verify(authHeader.slice(7), env.JWT_ACCESS_SECRET) as { _id?: string };
       const found = dbStore.users.find((u) => u._id === decoded._id);
       if (found) return ok(res, found);
     } catch {

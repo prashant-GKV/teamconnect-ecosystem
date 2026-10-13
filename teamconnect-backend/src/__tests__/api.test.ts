@@ -1,7 +1,8 @@
 import { describe, it, expect, beforeAll, afterAll } from "vitest";
 import type { Server } from "http";
+import type { AddressInfo } from "net";
 import { createApp } from "../app";
-import { TaskScope, TaskStatus, RequestStatus } from "@teamconnect/shared-types";
+import { TaskScope, RequestStatus } from "@teamconnect/shared-types";
 
 describe("TeamConnect Backend API Suite", () => {
   let server: Server;
@@ -11,7 +12,7 @@ describe("TeamConnect Backend API Suite", () => {
     const app = createApp();
     await new Promise<void>((resolve) => {
       server = app.listen(0, () => {
-        const address = server.address() as any;
+        const address = server.address() as AddressInfo;
         baseUrl = `http://localhost:${address.port}`;
         resolve();
       });

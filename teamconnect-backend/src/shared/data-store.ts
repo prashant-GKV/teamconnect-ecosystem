@@ -1,11 +1,12 @@
 import {
   AccountType, AdminRole, TaskScope, TaskStatus, TaskPriority,
   RequestStatus, MembershipStatus, ProjectStatus, ProjectMemberRole,
-  DelegatePermission, DelegationStatus, NotificationType, AuditAction
+  DelegatePermission, DelegationStatus, NotificationType, AuditAction,
+  SubmissionStatus
 } from "@teamconnect/shared-types";
 import type {
   UserWithRoles, Category, CategoryDelegate, Project, ProjectMember,
-  Request, Task, Submission, Notification, AuditEntry, UserSummary
+  Request, Task, Submission, Notification, AuditEntry
 } from "@teamconnect/shared-types";
 
 const now = new Date();
@@ -369,7 +370,7 @@ export const INITIAL_SUBMISSIONS: Submission[] = [
     version: 1,
     notes: "Completed initial documentation with tokens and typography tables.",
     files: [{ objectName: "docs-v1.pdf", originalName: "tokens.pdf", mimeType: "application/pdf", sizeBytes: 1048576, uploadedAt: d(-1) }],
-    status: "pending_review" as any,
+    status: SubmissionStatus.PendingReview,
     createdAt: d(-1), updatedAt: d(-1),
   },
   {
@@ -379,7 +380,7 @@ export const INITIAL_SUBMISSIONS: Submission[] = [
     version: 1,
     notes: "Lighthouse reports and bundle analysis graphs attached.",
     files: [{ objectName: "perf-v1.json", originalName: "bundle-report.json", mimeType: "application/json", sizeBytes: 524288, uploadedAt: d(-1) }],
-    status: "pending_review" as any,
+    status: SubmissionStatus.PendingReview,
     createdAt: d(-1), updatedAt: d(-1),
   },
 ];

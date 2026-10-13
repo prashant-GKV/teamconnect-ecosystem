@@ -20,6 +20,11 @@ requestsRouter.get("/", (req, res) => {
   const status = req.query.status as string;
 
   let list = dbStore.requests;
+  if (type === "inbox") {
+    list = list.filter((r) => Boolean(r.targetCategory));
+  } else if (type === "outbox") {
+    list = list.filter((r) => Boolean(r.requestingCategory));
+  }
   if (status) {
     list = list.filter((r) => r.status === status);
   }

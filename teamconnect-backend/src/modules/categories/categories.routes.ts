@@ -1,7 +1,7 @@
 import { Router } from "express";
 import { dbStore } from "../../shared/data-store";
 import { ok, created } from "../../shared/response";
-import { NotFoundError, ValidationError, ForbiddenError } from "../../shared/errors";
+import { NotFoundError } from "../../shared/errors";
 import { DelegationStatus, DelegatePermission, TaskScope } from "@teamconnect/shared-types";
 import type { Category, CategoryDelegate } from "@teamconnect/shared-types";
 

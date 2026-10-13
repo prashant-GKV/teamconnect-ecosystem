@@ -2,7 +2,6 @@ import { Router } from "express";
 import { dbStore, getDefaultUser } from "../../shared/data-store";
 import { ok, created } from "../../shared/response";
 import { NotFoundError } from "../../shared/errors";
-import { AccountType, AdminRole } from "@teamconnect/shared-types";
 import type { UserWithRoles } from "@teamconnect/shared-types";
 
 export const usersRouter = Router();

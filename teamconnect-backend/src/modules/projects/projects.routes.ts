@@ -36,7 +36,7 @@ projectsRouter.get("/", (req, res) => {
 });
 
 // POST /api/v1/projects
-projectsRouter.post("/", (req, res, next) => {
+projectsRouter.post("/", (req, res) => {
   const { name, description, originCategoryId, managerId, startAt, endAt, objectives } = req.body;
   const originCat = dbStore.categories.find((c) => c._id === originCategoryId) ?? getDefaultCategory();
   const manager = dbStore.users.find((u) => u._id === managerId) ?? getDefaultUser();

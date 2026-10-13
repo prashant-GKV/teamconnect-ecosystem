@@ -1,13 +1,5 @@
 import { describe, it, expect } from "vitest";
-import {
-  TaskStatus,
-  RequestStatus,
-  MembershipStatus,
-  ProjectStatus,
-  AccountType,
-  AdminRole,
-  DelegatePermission,
-} from "@teamconnect/shared-types";
+import { MembershipStatus } from "@teamconnect/shared-types";
 
 // Invariant helper: compute membership status from lifecycle dates and revocation
 export function computeMembershipStatus(
