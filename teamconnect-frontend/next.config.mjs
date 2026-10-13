@@ -16,17 +16,17 @@ const nextConfig = {
       { protocol: "http",  hostname: "localhost" },
     ],
   },
-  experimental: {
-    optimizePackageImports: [
-      "lucide-react",
-      "date-fns",
-      "@radix-ui/react-dialog",
-      "@radix-ui/react-toast",
-      "@radix-ui/react-alert-dialog",
-      "@radix-ui/react-select",
-      "@tanstack/react-query",
-    ],
-  },
+  // experimental: {
+  //   optimizePackageImports: [
+  //     "lucide-react",
+  //     "date-fns",
+  //     "@radix-ui/react-dialog",
+  //     "@radix-ui/react-toast",
+  //     "@radix-ui/react-alert-dialog",
+  //     "@radix-ui/react-select",
+  //     "@tanstack/react-query",
+  //   ],
+  // },
   compiler: {
     // Drop console.log/debug in production; keep error and warn for visibility
     removeConsole: process.env.NODE_ENV === "production" ? { exclude: ["error", "warn"] } : false,
